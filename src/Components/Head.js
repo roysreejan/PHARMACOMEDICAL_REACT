@@ -1,18 +1,26 @@
 import React from "react";
 import '../App.css';
-import { Link } from "react-router-dom";
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 const Head = () => {
-    return ( 
-        <div className = "App-header" >
-        
-        <Link to = "/" > < b > Home </b></Link >
-        <Link to = "/userList" > < b > Users </b></Link >
-        <Link to = "/contact" > < b > Contact </b></Link >
-        <Link to = "/login" > < b > Login </b></Link >
-        <Link to = "/signout" > < b > SignOut </b></Link >
-        <Link to = "/doctorProfile" > < b > DoctorProfile </b></Link >
+    return (
+        <div>
+          <br />
+          <Navbar bg="light" variant="light">
+            <Container>
+              <Nav className="me-auto">
+                <Nav.Link href="/login">Login</Nav.Link>
+                <Nav.Link href="/registration">Registration</Nav.Link>
+                <Nav.Link href="/homeDoctor">Home</Nav.Link>
+                <Nav.Link href="/doctorProfile">Profile</Nav.Link>
+                <Nav.Link href="/doctorFee">Fee</Nav.Link>
+                <Nav.Link href="/prescriptionsList">Prescriptions List</Nav.Link>
+                <Nav.Link href="/signout">SignOut</Nav.Link>
+              </Nav>
+            </Container>
+          </Navbar>
         </div>
-    )
-}
-
+      );
+    }
 export default Head;
