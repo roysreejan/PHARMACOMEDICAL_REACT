@@ -13,6 +13,7 @@ import Foot from './Components/Foot';
 // import UserDetails from './Components/UserDetails';
 import Login from './Components/Login';
 import Registration from './Components/Registration';
+import RegistrationOTP from './Components/RegistrationOTP';
 import SignOut from './Components/SignOut';
 import DoctorProfile from './Doctors/DoctorProfile';
 import HomeDoctor from './Doctors/HomeDoctor';
@@ -31,6 +32,7 @@ root.render(
         {/* <Route exact path='/contact' element={<Contact/>} /> */}
         <Route exact path='/login' element={<Login/>} />
         <Route exact path='/registration' element={<Registration/>} />
+        <Route exact path='/otp' element={<RegistrationOTP/>} />
         <Route exact path='/signout' element={<SignOut/>} />
         <Route exact path='/doctorProfile' element={<DoctorProfile/>} />
         <Route exact path='/homeDoctor' element={<HomeDoctor/>} />
