@@ -2,8 +2,12 @@ import React, { useState, useEffect } from "react";
 import Instance from "../Components/Instance";
 
 const DoctorAppointments = () => {
-    const [patientID,setPatientID]=useState([]);
+    const [appID1,setappID]=useState([]);
     let[token] = useState(localStorage.getItem('token'));
+    const [appID, setPatientID]=useState();
+    const [appointmentStatus, setAppointmentS]=useState();
+    console.log(appID, appointmentStatus);
+
     console.log(token);
     useEffect(()=>{
         Instance.get("/doctorAppointments", {
@@ -13,40 +17,50 @@ const DoctorAppointments = () => {
             })
         .then(resp=>{
         console.log(resp.data);
-        setPatientID(resp.data);
+        setappID(resp.data);
          }).catch(err=>{
         console.log(err);
     });
     },[]);
     return ( 
-        <div class='container'> 
+        <div class='container'>
             <form>
             <div class="form-group p-1">
-                <label for="patientID">Patient ID</label>
-                <select name="patientID" id="patientID">
+                <label for="appID">Patient ID</label>
+                <select onChange={(e)=>setPatientID(e.target.value)}>
                     <option value="">Select Patient ID</option>
-                    <option>
-                        {patientID.map(patient=>{
-                            return <option value={patient.patientID}>{patient.patientID}</option>
+                        {appID1.map(app=>{
+                            return <option value={app.appID}>({app.appID}) {app.name}</option>
                         })}
-                    </option>
-                    {/* <option value="doctor">Doctor</option>
-                    <option value="patient">Patient</option>
-                    <option value="pharmacist">Pharmacist</option> */}
                 </select>
             </div>
             <div class="form-group">
                 <label for="appointmentStatus">Appointment Status</label>
-                <select name="appointmentStatus" id="appointmentStatus">
+                <select onChange={(e)=>setAppointmentS(e.target.value)}>
                     <option value="" selected>Select Patient</option>
                     <option value="accepted">Accepted</option>
                     <option value="rejected">Rejected</option>
                 </select>
             </div>    
                 <div class="form-group p-1">
-                    <span>
-                        <input type="submit" name="submit" value="Submit" class="btn btn-info" />
-                    </span>
+                    <button onClick={()=>{
+                            Instance.post("/doctorAppointments", {
+                                params: {
+                                    token: token,
+                                    appID: appID,
+                                    appointmentStatus: appointmentStatus,
+                                },
+                                })
+                            .then(resp=>{
+                            console.log(resp.data);
+                            console.log('yes');
+                            //
+                             }).catch(err=>{
+                            console.log(err);
+                            console.log('no');
+                        });
+                        }
+                    } class="btn btn-primary">Submit</button>
                 </div> 
             </form> 
         </div>     
