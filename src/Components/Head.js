@@ -20,6 +20,7 @@ const Head = () => {
             {token ? <Nav.Link href="/homeDoctor">Home</Nav.Link> : ''}
             {token ? <Nav.Link href="/doctorProfile">Profile</Nav.Link> : ''}
             {token ? <Nav.Link href="/doctorFee">Fee</Nav.Link> : ''}
+            {token ? <Nav.Link href="/doctorAppointments">Appointment</Nav.Link> : ''}
             {token ? <Nav.Link href="/prescriptionsList">PrescriptionsList</Nav.Link> : ''}
             {token ? <Nav.Link href="/signout">Logout</Nav.Link> : ''}
           </Nav>

@@ -3,33 +3,34 @@ import Instance from "../Components/Instance";
 
 
 const DoctorFee = () => {
-    const [profile,setProfile]=useState([]);
+    const [dfee,setDFee]=useState('0');
     let[token] = useState(localStorage.getItem('token'));
-    console.log(token);
+    console.log(token, dfee);
+    // console.log(token);
     useEffect(()=>{
-        Instance.post("/doctorFee", {
-            params: {
-                token: token,
-            },
-            })
-        .then(resp=>{
-        console.log(resp.data);
-        setProfile(resp.data);
-         }).catch(err=>{
-        console.log(err);
-    });
-    },[]);
+        console.log(token, dfee);
+    },[token, dfee]);
     return ( 
         <div class='container'> 
             <form>
                 <div class="form-group">
-                    <label for="doctor_fee">Doctor Fee</label>
-                    <input type="text" class="form-control" id="doctor_fee" name="doctor_fee" placeholder="Enter Doctor Fee" />
+                    <input type="text" value={dfee} onChange={(e)=>setDFee(e.target.value)}/>
                 </div>
                 <div class="form-group p-1">
-                    <span>
-                        <input type="submit" name="submit" value="Submit" class="btn btn-info" />
-                    </span>
+                    <button  onClick={()=>{
+                        Instance.post("/doctorFee", {
+                            params: {
+                                token: token,
+                                fee: dfee,
+                            },
+                            })
+                        .then(resp=>{
+                        console.log(resp.data);
+                        //
+                         }).catch(err=>{
+                        console.log(err);
+                    });
+                    }} class="btn btn-primary">Submit</button>
                 </div> 
             </form> 
         </div>     

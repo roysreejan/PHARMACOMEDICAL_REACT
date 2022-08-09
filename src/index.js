@@ -18,6 +18,7 @@ import SignOut from './Components/SignOut';
 import DoctorProfile from './Doctors/DoctorProfile';
 import HomeDoctor from './Doctors/HomeDoctor';
 import DoctorFee from './Doctors/DoctorFee';
+import DoctorAppointments from './Doctors/DoctorAppointments';
 import PrescriptionsList from './Doctors/PrescriptionsList';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -37,6 +38,7 @@ root.render(
         <Route exact path='/doctorProfile' element={<DoctorProfile/>} />
         <Route exact path='/homeDoctor' element={<HomeDoctor/>} />
         <Route exact path='/doctorFee' element={<DoctorFee/>} />
+        <Route exact path='/doctorAppointments' element={<DoctorAppointments/>} />
         <Route exact path='/prescriptionsList' element={<PrescriptionsList/>} />
         {/* <Route exact path='/color' element={<ColorState/>} />
         <Route exact path='/effect' element={<EffectHookCheck/>} />
